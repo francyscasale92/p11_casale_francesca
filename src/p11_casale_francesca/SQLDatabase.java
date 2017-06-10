@@ -131,7 +131,7 @@ public class SQLDatabase{
 	    // conversione da int a Date
 	    DateFormat df = new SimpleDateFormat("yyyy");
 	    Date year = df.parse(String.valueOf(f.getAnnoPubblicazione()));
-	     
+	    
 	    // Scenario alternativo: mancano alcuni campi obbligatori del film
 	    if (f.getId()<=0||f.getTitolo()==null||f.getAnnoPubblicazione()<=0||f.getRegista()==null||
 	    	  f.getListaAttori()==null||f.getGenere()==null||f.getTrama()==null||f.getDurata()<=0){
@@ -156,46 +156,52 @@ public class SQLDatabase{
 	    for(int i=0; i<f.p.size(); i++){
 	    	String sqlP=null;
 		    Programmazione prog = f.p.get(i);
-		    String queryCheckP = "SELECT * FROM PROGRAMMAZIONE WHERE ID = ?";
+		    /*String queryCheckP = "SELECT * FROM PROGRAMMAZIONE WHERE ID = ?";
 		    PreparedStatement psp = c.prepareStatement(queryCheckP);
-		    psp.setInt(1, f.p.get(i).getId());
-		    ResultSet rsp = psp.executeQuery();
+		    psp.setInt(1, prog.getId());
+		    ResultSet rsp = psp.executeQuery();*/
 		    
 		    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		    // conversione da String a Date
 		    Date date = formatter.parse(prog.getData());
 		    
 		    // controllo sovrapposizioni programmazioni
-		    String queryCheckProg = "SELECT * FROM PROGRAMMAZIONE WHERE DATA = ? AND SALA = ?";
-	    	PreparedStatement psp1 = c.prepareStatement(queryCheckProg);
+		    String queryCheckProg1 = "SELECT * FROM PROGRAMMAZIONE WHERE DATA = ? AND SALA = ?";
+	    	PreparedStatement psp1 = c.prepareStatement(queryCheckProg1);
 			psp1.setString(1, prog.getData());
 	    	psp1.setInt(2,prog.getSala());
 			ResultSet rsp1 = psp1.executeQuery();
 			int count = 0;
 		    while(rsp1.next()) {
-		        count++;
+		    	count++;
 		    }
-		    
+		    //System.err.println("count "+count);
 		    // Scenario alternativo: mancano alcuni campi obbligatori della programmazione
 		    if (prog.getId()<=0||prog.getData()==null||prog.getSala()<=0){
-		    	System.err.println("Mancano alcuni campi obbligatori della programmazione!");
+		    	System.err.println("Mancano alcuni campi obbligatori della programmazione!");	
+		    }
 		    // Scenario alternativo: la data della programmazione è passata
-		    }else if(date.before(today)){
+		    else if(date.before(today)){
 			    System.err.println("Errore! La data inserita è passata!");
-			}else if(count>1){
+			}
+		    else if(count>1){
 		    	System.err.println("Errore! La sala "+prog.getSala()+" è già occupata nel giorno: "+prog.getData());
+		    	/*c.close();
+		    	deleteFilm(f);   	
+		    	connect();
+		    	c.setAutoCommit(false); */   
 		    	//System.exit(0);
-		    }else{
-		    	if (!rsp.next()) {
+		    }else if(count == 1){
+			    //if(!rsp.next()) {
 		    		sqlP = "INSERT INTO PROGRAMMAZIONE (ID,DATA,SALA) " +
 	                  	   "VALUES ("+prog.getId()+",'"+prog.getData()+"',"+prog.getSala()+");"; 
 		    		stmt.executeUpdate(sqlP);
 		    		//Record PROGRAMMAZIONE aggiunto
-		        }
-		    }
-    		      
+			    //}
+		    
+		     }    
 	      }
-	      
+	       
 	      stmt.close();
 	      c.commit();
 	      c.close();
@@ -406,7 +412,7 @@ public class SQLDatabase{
 	    if(count>1){
 	    	// scenario alternativo verificato
 	    	System.err.println("Errore! La sala "+p.getSala()+" è già occupata per più film "
-	    						+ "nello stesso giorno: "+p.getData());
+	    						+ "nello stesso giorno: "+data);
 	    }
 	    // Scenario alternativo: data passata
 	    else if(date.before(today)){
