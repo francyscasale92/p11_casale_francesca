@@ -3,6 +3,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Sconto;
+
 public class ScontoTest {
 
 	private static Sconto s;
@@ -149,5 +151,5 @@ public class ScontoTest {
 		assertEquals("Campo non recuperato correttamente","31/12/2017", s3.getScadenza());
 		
 	}
-	
+
 }

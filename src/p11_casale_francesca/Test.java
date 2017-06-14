@@ -1,4 +1,8 @@
 package p11_casale_francesca;
+
+import java.sql.SQLException;
+import java.text.ParseException;
+
 // TODO: Auto-generated Javadoc
 /**
  * La classe Test consente la verifica dei casi d'uso.
@@ -9,8 +13,11 @@ public class Test {
 	 * Il metodo main.
 	 *
 	 * @param args
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 * @throws ParseException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, ParseException {
 		SQLDatabase db = new SQLDatabase();
 		db.create();
 		//db.insertCinema();

@@ -4,7 +4,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ AbbonamentoTest.class, FilmTest.class, ProgrammazioneTest.class, ScontoTest.class,
-		SQLDatabaseTest.class, UpdateSQLDatabaseTest.class, SQLDatabaseErrorTest.class, UpdateSQLDatabaseErrorTest.class})
+		SQLDatabaseErrorTest.class, SQLDatabaseTest.class, UpdateSQLDatabaseErrorTest.class,
+		UpdateSQLDatabaseTest.class })
 public class TestSuite {
 
 }

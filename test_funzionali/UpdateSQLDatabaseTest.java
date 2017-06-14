@@ -7,9 +7,14 @@ import java.text.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Abbonamento;
+import p11_casale_francesca.Programmazione;
+import p11_casale_francesca.SQLDatabase;
+import p11_casale_francesca.Sconto;
+
 public class UpdateSQLDatabaseTest {
 
-	private static SQLDatabase db = null;
+private static SQLDatabase db = null;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -177,5 +182,5 @@ public class UpdateSQLDatabaseTest {
 		
 		db.c.close();
 	}
-	
+
 }

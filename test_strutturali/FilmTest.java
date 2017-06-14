@@ -3,9 +3,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Film;
 
 public class FilmTest {
-	
+
 	private static Film f = null;
 	private static Film f1 = null;
 	
@@ -171,5 +172,5 @@ public class FilmTest {
 		assertEquals("Campo non recuperato correttamente",135, f1.getDurata());
 		
     }
-    
+
 }

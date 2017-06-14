@@ -3,6 +3,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Programmazione;
+
 public class ProgrammazioneTest {
 
 	private static Programmazione p = null;
@@ -58,5 +60,5 @@ public class ProgrammazioneTest {
 		assertEquals("Campo non recuperato correttamente",2, p.getSala());
 		assertEquals("Campo non recuperato correttamente",2, p1.getSala());
 	}
-	
+
 }

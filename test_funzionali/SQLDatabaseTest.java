@@ -1,14 +1,22 @@
 import static org.junit.Assert.*;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Abbonamento;
+import p11_casale_francesca.Film;
+import p11_casale_francesca.Programmazione;
+import p11_casale_francesca.SQLDatabase;
+import p11_casale_francesca.Sconto;
+
 public class SQLDatabaseTest {
 
-	private static SQLDatabase db = null;
+private static SQLDatabase db = null;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -241,20 +249,20 @@ public class SQLDatabaseTest {
 		db.connect();
 		//Abbonamento a = new Abbonamento(1,"Abbonamento 5 ingressi",30.00,"Tutti","18/09/2017");
 		Abbonamento a1 = new Abbonamento(2,"Abbonamento 10 ingressi",55.00,"Tutti","18/09/2017");
-		Abbonamento a2 = new Abbonamento(3,"Abbonamento under 26",50.00,"Ragazzi di età inferiore ai 26 anni",
-                						 "30/09/2017");
+		/*Abbonamento a2 = new Abbonamento(3,"Abbonamento under 26",50.00,"Ragazzi di età inferiore ai 26 anni",
+                						 "30/09/2017");*/
 		Abbonamento a3 = new Abbonamento(4,"Abbonamento mensile",21.00,"Tutti","21/07/2017");
 		
 		//boolean isFound = db.selectAbbonamento(a);
 		boolean isFound1 = db.selectAbbonamento(a1);
-		boolean isFound2 = db.selectAbbonamento(a2);
+		//boolean isFound2 = db.selectAbbonamento(a2);
 		boolean isFound3 = db.selectAbbonamento(a3);
 		
 		//assertTrue("Ricerca fallita",isFound);
 		assertTrue("Ricerca fallita",isFound1);
-		assertTrue("Ricerca fallita",isFound2);
+		//assertTrue("Ricerca fallita",isFound2);
 		assertTrue("Ricerca fallita",isFound3);
 		
 	}
-	
+
 }

@@ -3,6 +3,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Abbonamento;
+
 public class AbbonamentoTest {
 
 	private static Abbonamento a;
@@ -148,5 +150,5 @@ public class AbbonamentoTest {
 		assertEquals("Campo non recuperato correttamente","21/07/2017", a3.getScadenza());
 		
 	}
-
+	
 }

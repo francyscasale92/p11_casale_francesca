@@ -6,6 +6,12 @@ import java.text.ParseException;
 import org.junit.Before;
 import org.junit.Test;
 
+import p11_casale_francesca.Abbonamento;
+import p11_casale_francesca.Film;
+import p11_casale_francesca.Programmazione;
+import p11_casale_francesca.SQLDatabase;
+import p11_casale_francesca.Sconto;
+
 public class SQLDatabaseErrorTest {
 
 private static SQLDatabase db = null;
