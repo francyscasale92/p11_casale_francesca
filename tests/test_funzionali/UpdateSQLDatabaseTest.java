@@ -1,3 +1,4 @@
+package test_funzionali;
 import static org.junit.Assert.*;
 
 import java.sql.PreparedStatement;

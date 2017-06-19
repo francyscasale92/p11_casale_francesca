@@ -1,3 +1,4 @@
+package test_strutturali;
 import static org.junit.Assert.*;
 
 import java.sql.PreparedStatement;
