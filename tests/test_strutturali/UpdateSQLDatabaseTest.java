@@ -15,7 +15,7 @@ import p11_casale_francesca.Sconto;
 
 public class UpdateSQLDatabaseTest {
 
-private static SQLDatabase db = null;
+	private static SQLDatabase db = null;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -183,5 +183,5 @@ private static SQLDatabase db = null;
 		
 		db.c.close();
 	}
-
+	
 }
